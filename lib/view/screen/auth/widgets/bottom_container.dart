@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:turf_booking/utils/navigations.dart';
+import 'package:turf_booking/view/screen/auth/register.dart';
 import 'package:turf_booking/view_model/view_model.dart';
 
 class BottomContainer extends StatelessWidget {
@@ -105,7 +107,7 @@ class BottomContainer extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  // controller.navigateToSignUp();
+                  Navigations.push(const SignupPage());
                 },
                 child: const Text(
                   "Sign Up",

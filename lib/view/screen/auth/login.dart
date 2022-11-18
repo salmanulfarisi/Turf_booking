@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final controller = Provider.of<LoginViewModel>(context);
     return Scaffold(
-        body: Center(
+        body: SafeArea(
       child: SingleChildScrollView(
         child: Form(
           child: Padding(
@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: size.height * 0.1,
+                  height: size.height * 0.05,
                 ),
                 const Text('Hello',
                     style: TextStyle(
@@ -30,12 +30,13 @@ class LoginPage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.green,
                     )),
-                const Text('Sing In On Your Account',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    )),
+                const Text(
+                  'Sign In On Your Account',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.grey,
+                  ),
+                ),
                 TextFieldWidget(
                   hint: 'E-mail',
                   validator: '',
