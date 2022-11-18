@@ -10,6 +10,7 @@ class Providers {
         ChangeNotifierProvider(create: (_) => HomeViewModel()),
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => SignupController()),
+        ChangeNotifierProvider(create: (_) => BottomNavigationBarViewModel()),
       ],
       child: const MyApp(),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:turf_booking/utils/utils.dart';
+import 'package:turf_booking/view/screen/screen.dart';
 
 class LoginViewModel extends ChangeNotifier {
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
@@ -11,6 +13,7 @@ class LoginViewModel extends ChangeNotifier {
     isLoading = true;
     notifyListeners();
     await Future.delayed(const Duration(seconds: 10));
+    Navigations.push(const BottomNavigation());
     isLoading = false;
     notifyListeners();
   }
