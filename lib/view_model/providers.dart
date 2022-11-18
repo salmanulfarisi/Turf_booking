@@ -11,6 +11,7 @@ class Providers {
         ChangeNotifierProvider(create: (_) => LoginViewModel()),
         ChangeNotifierProvider(create: (_) => SignupController()),
         ChangeNotifierProvider(create: (_) => BottomNavigationBarViewModel()),
+        ChangeNotifierProvider(create: (_) => SoptViewModel()),
       ],
       child: const MyApp(),
     );

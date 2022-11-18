@@ -76,7 +76,10 @@ class HomeDisplay extends StatelessWidget {
                   )
                 : const GridViewWidget();
           },
-        )
+        ),
+        // Consumer(
+        //   builder: builder,
+        // )
       ],
     );
   }
