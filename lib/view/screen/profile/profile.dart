@@ -5,9 +5,14 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Profile'),
+    return Scaffold(
+      body: SafeArea(
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.exit_to_app,
+          ),
+        ),
       ),
     );
   }

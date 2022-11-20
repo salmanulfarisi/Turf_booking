@@ -20,6 +20,7 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      // obscureText: Provider.of<LoginViewModel>(context, listen: true).obscure,
       decoration: InputDecoration(
         hintText: hint,
         prefixIcon: Icon(

@@ -22,6 +22,7 @@ class SignupPage extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   Navigations.pop();
+                  controller.clearData(context);
                 },
                 icon: const Icon(CupertinoIcons.back),
               ),

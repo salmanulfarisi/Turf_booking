@@ -29,7 +29,7 @@ class BottomContainerOnRegister extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                controller.signup();
+                controller.signup(context);
               },
               child: Container(
                 width: size.width,

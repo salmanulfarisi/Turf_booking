@@ -2,8 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:turf_booking/utils/utils.dart';
-import 'package:turf_booking/view/screen/screen.dart';
+import 'package:provider/provider.dart';
 import 'package:turf_booking/view_model/view_model.dart';
 
 class SplashScreen extends GetView<SplashScreenController> {
@@ -11,9 +10,11 @@ class SplashScreen extends GetView<SplashScreenController> {
 
   @override
   Widget build(BuildContext context) {
+    final homePageController = Provider.of<HomeViewModel>(context);
+    final controller = Get.put(SplashScreenController());
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer(const Duration(seconds: 2), () {
-        Navigations.pushReplace(const LoginPage());
+        homePageController.nearbyTurf();
       });
     });
     return Scaffold(

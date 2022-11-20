@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turf_booking/utils/navigations.dart';
 import 'package:turf_booking/view/screen/auth/register.dart';
+import 'package:turf_booking/view/screen/screen.dart';
 import 'package:turf_booking/view_model/view_model.dart';
 
 class BottomContainer extends StatelessWidget {
@@ -17,9 +18,9 @@ class BottomContainer extends StatelessWidget {
           Consumer<LoginViewModel>(
             builder: (context, value, child) {
               return ElevatedButton(
-                onPressed: () {
-                  value.loginUser();
-                },
+                onPressed: (() async {
+                  await value.loginUser(context);
+                }),
                 style: ButtonStyle(
                   elevation: MaterialStateProperty.all(0),
                   backgroundColor: MaterialStateProperty.all(
@@ -55,7 +56,9 @@ class BottomContainer extends StatelessWidget {
             height: 20,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigations.push(const MobileNumberAuth());
+            },
             child: Container(
               padding: const EdgeInsets.all(8),
               height: size.height / 16,

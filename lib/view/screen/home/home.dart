@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:turf_booking/controllers/location_controller.dart';
 import 'package:turf_booking/view/screen/home/widgets/home_widgets.dart';
-import 'package:turf_booking/view_model/home_view_model.dart';
+import 'package:turf_booking/view_model/view_model.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +13,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final LocationController locationController = Get.put(LocationController());
     final homepageController = Provider.of<HomeViewModel>(context);
+    final SoptViewModel controller = Provider.of<SoptViewModel>(context);
+
     return Scaffold(
         body: SafeArea(
       child: Padding(
@@ -25,13 +27,15 @@ class HomePage extends StatelessWidget {
                 Row(
                   children: [
                     const Icon(CupertinoIcons.location),
-                    Text(
-                      'Location: ${locationController.currentAddress.value}',
-                      // locationController.currentAddress.value,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                    Obx(
+                      () => Text(
+                        '${locationController.currentAddress}',
+                        // locationController.currentAddress.value,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ],
@@ -49,6 +53,14 @@ class HomePage extends StatelessWidget {
               ),
               padding: const EdgeInsets.only(left: 20),
               child: TextFormField(
+                onChanged: (value) {
+                  if (value.isNotEmpty) {
+                    homepageController.isSearchClick == true;
+                  } else {
+                    homepageController.isSearchClick == false;
+                  }
+                  controller.search(value);
+                },
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Search',
@@ -61,7 +73,7 @@ class HomePage extends StatelessWidget {
               height: 20,
             ),
             Consumer(
-              builder: (context, value, child) {
+              builder: (context, value, _) {
                 return AnimatedCrossFade(
                   firstChild: const HomeDisplay(),
                   secondChild: const SearchGrid(),

@@ -1,16 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:turf_booking/controllers/controllers.dart';
 import 'package:turf_booking/view/screen/home/widgets/search_grid.dart';
 import 'package:turf_booking/view/screen/spot/widget/all_turf_display.dart';
-import 'package:turf_booking/view_model/home_view_model.dart';
+import 'package:turf_booking/view_model/view_model.dart';
 
 class SpotPage extends StatelessWidget {
   const SpotPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final LocationController locationController = Get.put(LocationController());
+
     final homepageController = Provider.of<HomeViewModel>(context);
+    final SoptViewModel controller =
+        Provider.of<SoptViewModel>(context, listen: false);
+    WidgetsBinding.instance.addPostFrameCallback(((timeStamp) {
+      controller.oninit();
+    }));
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,12 +30,11 @@ class SpotPage extends StatelessWidget {
                 Row(
                   children: [
                     Row(
-                      children: const [
-                        Icon(CupertinoIcons.location),
+                      children: [
+                        const Icon(CupertinoIcons.location),
                         Text(
-                          'Location: ',
-                          // locationController.currentAddress.value,
-                          style: TextStyle(
+                          locationController.currentAddress.value,
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
@@ -47,6 +55,14 @@ class SpotPage extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.only(left: 20),
                   child: TextFormField(
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        homepageController.isSearchClick = true;
+                      } else {
+                        homepageController.isSearchClick = false;
+                      }
+                      controller.search(value);
+                    },
                     decoration: const InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Search',

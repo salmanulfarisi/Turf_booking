@@ -2,16 +2,18 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:turf_booking/controllers/controllers.dart';
 import 'package:turf_booking/view/screen/screen.dart';
+import 'package:turf_booking/view_model/view_model.dart';
 
 class SplashScreenController extends GetxController {
   final locationController = Get.put(LocationController());
-  // final HomePageController nearbyController = Get.put(HomePageController());
+  final HomeViewModel nearbyController = Get.put(HomeViewModel());
 
   @override
   void onInit() {
+    checkUserLoggedIn();
     // nearbyController.nearbyTruff();
     locationController.getCurrentPosition();
-    checkUserLoggedIn();
+
     super.onInit();
   }
 

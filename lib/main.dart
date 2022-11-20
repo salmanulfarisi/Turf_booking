@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:turf_booking/utils/utils.dart';
-import 'package:turf_booking/view/screen/splash/splash.dart';
+import 'package:turf_booking/view/screen/screen.dart';
 import 'package:turf_booking/view_model/view_model.dart';
 
 void main() {

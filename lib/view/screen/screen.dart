@@ -1,5 +1,10 @@
 export 'auth/login.dart';
+export 'auth/mobile_auth.dart';
+export 'auth/mobile_verification_screen.dart';
+export 'auth/register.dart';
 export 'bottom_navigation/bottom_navigation.dart';
+export 'details/details.dart';
+export 'email_verify/email_verification.dart';
 export 'home/home.dart';
 export 'profile/profile.dart';
 export 'splash/splash.dart';

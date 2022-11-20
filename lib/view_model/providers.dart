@@ -12,6 +12,10 @@ class Providers {
         ChangeNotifierProvider(create: (_) => SignupController()),
         ChangeNotifierProvider(create: (_) => BottomNavigationBarViewModel()),
         ChangeNotifierProvider(create: (_) => SoptViewModel()),
+        ChangeNotifierProvider(create: (_) => EmailVerifyViewModel()),
+        ChangeNotifierProvider(create: (_) => MobielOTPViewModel()),
+        ChangeNotifierProvider(create: (_) => MobielVerifyViewModel()),
+        ChangeNotifierProvider(create: (_) => DetailsController()),
       ],
       child: const MyApp(),
     );

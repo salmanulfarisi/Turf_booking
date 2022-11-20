@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:turf_booking/view/screen/home/widgets/grid_view.dart';
-import 'package:turf_booking/view_model/home_view_model.dart';
+import 'package:turf_booking/view/screen/home/widgets/home_widgets.dart';
+import 'package:turf_booking/view_model/view_model.dart';
 
 class HomeDisplay extends StatelessWidget {
   const HomeDisplay({Key? key}) : super(key: key);
@@ -10,6 +10,8 @@ class HomeDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final homepageController = Provider.of<HomeViewModel>(context);
+    SoptViewModel controller = context.read<SoptViewModel>();
+
     return Column(
       children: [
         Container(
@@ -60,12 +62,16 @@ class HomeDisplay extends StatelessWidget {
         Row(
           children: [
             const Divider(),
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'View All',
-              ),
-            ),
+            Consumer<DetailsController>(builder: (context, value, _) {
+              return TextButton(
+                onPressed: () {
+                  value.allTurfView();
+                },
+                child: const Text(
+                  'View All',
+                ),
+              );
+            }),
           ],
         ),
         Consumer<HomeViewModel>(
@@ -77,9 +83,11 @@ class HomeDisplay extends StatelessWidget {
                 : const GridViewWidget();
           },
         ),
-        // Consumer(
-        //   builder: builder,
-        // )
+        Consumer<SoptViewModel>(builder: (context, value, _) {
+          return controller.isLoading
+              ? const CircularProgressIndicator()
+              : const ViewAllTurf();
+        }),
       ],
     );
   }
