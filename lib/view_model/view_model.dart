@@ -1,3 +1,4 @@
+export 'booking_view_model.dart';
 export 'bottom_navigation_view_model.dart';
 export 'details_view_model.dart';
 export 'email_verify_view_model.dart';

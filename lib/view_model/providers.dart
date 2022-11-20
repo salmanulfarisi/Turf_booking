@@ -16,6 +16,7 @@ class Providers {
         ChangeNotifierProvider(create: (_) => MobielOTPViewModel()),
         ChangeNotifierProvider(create: (_) => MobielVerifyViewModel()),
         ChangeNotifierProvider(create: (_) => DetailsController()),
+        ChangeNotifierProvider(create: (_) => BookinController()),
       ],
       child: const MyApp(),
     );

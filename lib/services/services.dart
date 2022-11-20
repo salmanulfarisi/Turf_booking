@@ -1,3 +1,5 @@
+export 'book_to_add.dart';
+export 'booking_service.dart';
 export 'email_verificaiton_service.dart';
 export 'login_service.dart';
 export 'mobile_service.dart';

@@ -1,3 +1,4 @@
+export 'booking_model.dart';
 export 'login_model.dart';
 export 'mobiel_verify_respo_model.dart';
 export 'mobile_model.dart';
